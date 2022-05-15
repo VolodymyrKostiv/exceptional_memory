@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../screens/theory_secondary_page.dart';
+import '../screens/theory_secondary_screen.dart';
 
 class TheoryPageLink extends StatelessWidget {
   final String linkName;
-  final TheorySecondaryPage page;
+  final TheorySecondaryScreen page;
 
   const TheoryPageLink({Key? key, required this.linkName, required this.page})
       : super(key: key);

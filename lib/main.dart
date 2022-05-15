@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'theory/screens/theory_main_page.dart';
+import 'library/screens/poem_lib.dart';
+import 'theory/screens/theory_main_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Exceptional Memory',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: const Color.fromARGB(255, 14, 75, 125),
@@ -61,11 +63,10 @@ class _NavigationWidget extends State<NavigationWidget> {
   ];
 
   static const List<Widget> pages = [
-    TheoryMainPage(),
-    TheoryMainPage(),
-    TheoryMainPage(),
-    TheoryMainPage(),
-    TheoryMainPage(),
+    TheoryMainScreen(),
+    PoemLib(),
+    TheoryMainScreen(),
+    TheoryMainScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -77,16 +78,6 @@ class _NavigationWidget extends State<NavigationWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 14, 75, 125),
-        title: FittedBox(
-          child: Text(
-            pageNames.elementAt(_selectedIndex),
-          ),
-          fit: BoxFit.fitHeight,
-        ),
-        titleTextStyle: Theme.of(context).textTheme.headline1,
-      ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 40,
@@ -110,10 +101,6 @@ class _NavigationWidget extends State<NavigationWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.text_snippet),
             label: 'My texts',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'General',
           ),
         ],
         currentIndex: _selectedIndex,
