@@ -11,10 +11,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Exceptional Memory',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      darkTheme: ThemeData(
         brightness: Brightness.dark,
+        primaryColor: const Color.fromARGB(255, 14, 75, 125),
+        fontFamily: 'Calibri',
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 26,
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+          headline2: TextStyle(
+            fontSize: 20,
+            color: Color.fromARGB(255, 14, 75, 125),
+            fontWeight: FontWeight.w500,
+          ),
+          bodyText1: TextStyle(
+            fontSize: 20,
+            fontStyle: FontStyle.italic,
+            color: Color.fromARGB(255, 14, 75, 125),
+            fontWeight: FontWeight.w300,
+          ),
+          bodyText2: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
       ),
       themeMode: ThemeMode.dark,
       home: const NavigationWidget(),
@@ -31,10 +52,6 @@ class NavigationWidget extends StatefulWidget {
 
 class _NavigationWidget extends State<NavigationWidget> {
   int _selectedIndex = 0;
-  static const TextStyle _titleStyle = TextStyle(
-    fontSize: 30,
-    fontFamily: "Times New Roman",
-  );
   static const List<String> pageNames = [
     'Theory',
     'Library',
@@ -61,13 +78,14 @@ class _NavigationWidget extends State<NavigationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 14, 75, 125),
         title: FittedBox(
           child: Text(
             pageNames.elementAt(_selectedIndex),
           ),
           fit: BoxFit.fitHeight,
         ),
-        titleTextStyle: _titleStyle,
+        titleTextStyle: Theme.of(context).textTheme.headline1,
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

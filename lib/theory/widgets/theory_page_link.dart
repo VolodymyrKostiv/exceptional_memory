@@ -1,11 +1,13 @@
-import 'package:exceptional_memory/theory/widgets/general_theory.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/theory_secondary_page.dart';
 
 class TheoryPageLink extends StatelessWidget {
   final String linkName;
-  const TheoryPageLink({Key? key, required this.linkName}) : super(key: key);
+  final TheorySecondaryPage page;
+
+  const TheoryPageLink({Key? key, required this.linkName, required this.page})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +15,14 @@ class TheoryPageLink extends StatelessWidget {
       child: TextButton(
         child: Text(
           linkName.toUpperCase(),
-          style: const TextStyle(
-            fontSize: 24,
-          ),
+          style: Theme.of(context).textTheme.headline2,
           textAlign: TextAlign.center,
         ),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const TheorySecondaryPage(),
+              builder: (context) => page,
             ),
           );
         },
