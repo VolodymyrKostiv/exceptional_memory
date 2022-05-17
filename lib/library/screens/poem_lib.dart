@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:exceptional_memory/library/services/poem_api_service.dart';
 import 'package:exceptional_memory/library/widgets/poem_card.dart';
 import 'package:flutter/material.dart';
 
 import '../models/poem_model.dart';
+import 'poem_page.dart';
 
 class PoemLib extends StatefulWidget {
   const PoemLib({Key? key}) : super(key: key);
@@ -73,8 +76,20 @@ class _PoemLibState extends State<PoemLib> {
                 context,
                 index,
               ) {
-                return PoemCard(
-                  poem: _poems![index],
+                return GestureDetector(
+                  onTap: (() => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PoemPage(
+                              poem: _poems[index],
+                            ),
+                          ),
+                        ),
+                      }),
+                  child: PoemCard(
+                    poem: _poems![index],
+                  ),
                 );
               },
             ),

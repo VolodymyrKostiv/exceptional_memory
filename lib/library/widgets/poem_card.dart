@@ -17,16 +17,16 @@ class PoemCard extends StatelessWidget {
               subtitle: Text(poem.title),
             ),
             Text(
-              poem.lines[0],
+              poem.lines.length >= 1 ? poem.lines[0] : "",
             ),
             Text(
-              poem.lines[1],
+              poem.lines.length >= 2 ? poem.lines[1] : "",
             ),
             Text(
-              poem.lines[2],
+              poem.lines.length >= 3 ? poem.lines[2] : "",
             ),
             Text(
-              poem.lines[3],
+              poem.lines.length >= 4 ? poem.lines[3] : "",
             ),
           ],
         ),
