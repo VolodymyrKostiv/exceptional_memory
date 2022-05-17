@@ -1,23 +1,21 @@
-import 'dart:developer';
-
-import 'package:exceptional_memory/library/services/poem_api_service.dart';
-import 'package:exceptional_memory/library/widgets/poem_card.dart';
+import 'package:exceptional_memory/poem_api_library/services/poem_api_service.dart';
+import 'package:exceptional_memory/poem_api_library/widgets/poem_api_card.dart';
 import 'package:flutter/material.dart';
 
-import '../models/poem_model.dart';
-import 'poem_page.dart';
+import '../models/api_poem.dart';
+import 'poem_api_page.dart';
 
-class PoemLib extends StatefulWidget {
-  const PoemLib({Key? key}) : super(key: key);
+class PoemAPILib extends StatefulWidget {
+  const PoemAPILib({Key? key}) : super(key: key);
 
   @override
-  _PoemLibState createState() => _PoemLibState();
+  _PoemAPILibState createState() => _PoemAPILibState();
 }
 
-class _PoemLibState extends State<PoemLib> {
+class _PoemAPILibState extends State<PoemAPILib> {
   final pageName = "Library";
 
-  List<Poem> _poems = [];
+  List<APIPoem> _poems = [];
   ScrollController _scrollController = new ScrollController();
 
   @override
@@ -65,13 +63,13 @@ class _PoemLibState extends State<PoemLib> {
         ),
         titleTextStyle: Theme.of(context).textTheme.headline1,
       ),
-      body: _poems == null || _poems!.isEmpty
+      body: _poems.isEmpty
           ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
               controller: _scrollController,
-              itemCount: _poems!.length,
+              itemCount: _poems.length,
               itemBuilder: (
                 context,
                 index,
@@ -81,14 +79,14 @@ class _PoemLibState extends State<PoemLib> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PoemPage(
+                            builder: (context) => PoemAPIPage(
                               poem: _poems[index],
                             ),
                           ),
                         ),
                       }),
-                  child: PoemCard(
-                    poem: _poems![index],
+                  child: PoemAPICard(
+                    poem: _poems[index],
                   ),
                 );
               },

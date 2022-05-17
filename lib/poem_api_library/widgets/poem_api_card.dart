@@ -1,10 +1,10 @@
-import 'package:exceptional_memory/library/models/poem_model.dart';
+import 'package:exceptional_memory/poem_api_library/models/api_poem.dart';
 import 'package:flutter/material.dart';
 
-class PoemCard extends StatelessWidget {
-  final Poem poem;
+class PoemAPICard extends StatelessWidget {
+  final APIPoem poem;
 
-  const PoemCard({Key? key, required this.poem}) : super(key: key);
+  const PoemAPICard({Key? key, required this.poem}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

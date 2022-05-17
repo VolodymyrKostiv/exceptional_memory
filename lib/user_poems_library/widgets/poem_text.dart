@@ -11,7 +11,7 @@ class PoemText extends StatelessWidget {
     return Center(
       child: ListView.builder(
         controller: _scrollController,
-        itemCount: lines!.length,
+        itemCount: lines.length,
         itemBuilder: (
           context,
           index,

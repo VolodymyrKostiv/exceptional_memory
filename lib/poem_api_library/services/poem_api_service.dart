@@ -1,18 +1,18 @@
 import 'dart:developer';
 
-import 'package:exceptional_memory/library/api/poem_api_constants.dart';
-import 'package:exceptional_memory/library/models/poem_model.dart';
+import 'package:exceptional_memory/poem_api_library/api/poem_api_constants.dart';
+import 'package:exceptional_memory/poem_api_library/models/api_poem.dart';
 import 'package:http/http.dart' as http;
 
 class PoemApiService {
-  Future<List<Poem>?> getRandomPoems(int numOfPoems) async {
+  Future<List<APIPoem>?> getRandomPoems(int numOfPoems) async {
     try {
       var url = Uri.parse(PoemAPIConstants.baseUrl +
           PoemAPIConstants.randomEndpoint +
           "$numOfPoems");
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        List<Poem> _model = poemFromJson(response.body);
+        List<APIPoem> _model = poemFromJson(response.body);
         return _model;
       }
     } catch (e) {
@@ -21,13 +21,13 @@ class PoemApiService {
     }
   }
 
-  Future<Poem> getRandomPoem() async {
+  Future<APIPoem> getRandomPoem() async {
     try {
       var url =
           Uri.parse(PoemAPIConstants.baseUrl + PoemAPIConstants.randomEndpoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        Poem _model = poemFromJson(response.body)[0];
+        APIPoem _model = poemFromJson(response.body)[0];
         return _model;
       }
     } catch (e) {

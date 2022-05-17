@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-List<Poem> poemFromJson(String str) =>
-    List<Poem>.from(json.decode(str).map((x) => Poem.fromJson(x)));
+List<APIPoem> poemFromJson(String str) =>
+    List<APIPoem>.from(json.decode(str).map((x) => APIPoem.fromJson(x)));
 
-String poemToJson(List<Poem> data) =>
+String poemToJson(List<APIPoem> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Poem {
-  Poem({
+class APIPoem {
+  APIPoem({
     required this.title,
     required this.author,
     required this.lines,
@@ -19,7 +19,7 @@ class Poem {
   final List<String> lines;
   final String linecount;
 
-  factory Poem.fromJson(Map<String, dynamic> json) => Poem(
+  factory APIPoem.fromJson(Map<String, dynamic> json) => APIPoem(
         title: json["title"],
         author: json["author"],
         lines: List<String>.from(json["lines"].map((x) => x)),

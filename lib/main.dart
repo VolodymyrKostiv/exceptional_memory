@@ -1,8 +1,20 @@
+import 'package:exceptional_memory/user_poems_library/screens/poem_lib.dart';
 import 'package:flutter/material.dart';
-import 'library/screens/poem_lib.dart';
+import 'user_poems_library/models/libpoem.dart';
+import 'poem_api_library/screens/poem_api_lib.dart';
 import 'theory/screens/theory_main_screen.dart';
 
-void main() => runApp(const MyApp());
+import 'package:hive_flutter/hive_flutter.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(LibPoemAdapter());
+  await Hive.openBox<LibPoem>('libpoems');
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -54,19 +66,11 @@ class NavigationWidget extends StatefulWidget {
 
 class _NavigationWidget extends State<NavigationWidget> {
   int _selectedIndex = 0;
-  static const List<String> pageNames = [
-    'Theory',
-    'Library',
-    'I',
-    'My texts',
-    'Main',
-  ];
 
   static const List<Widget> pages = [
     TheoryMainScreen(),
+    PoemAPILib(),
     PoemLib(),
-    TheoryMainScreen(),
-    TheoryMainScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -93,10 +97,6 @@ class _NavigationWidget extends State<NavigationWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.library_books),
             label: 'Library',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.abc),
-            label: 'I',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.text_snippet),
