@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/poem_font_size_provider.dart';
 
 class PoemText extends StatelessWidget {
   final List<String> lines;
@@ -8,18 +11,24 @@ class PoemText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView.builder(
-        controller: _scrollController,
-        itemCount: lines.length,
-        itemBuilder: (
-          context,
-          index,
-        ) {
-          return Text(
-            lines[index],
-          );
-        },
+    return Container(
+      height: 671,
+      child: Center(
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: lines.length,
+          itemBuilder: (
+            context,
+            index,
+          ) {
+            return Text(
+              lines[index],
+              style: TextStyle(
+                fontSize: Provider.of<PoemFontSizeProvider>(context).value,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

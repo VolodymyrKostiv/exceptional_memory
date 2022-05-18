@@ -44,7 +44,6 @@ class PoemAPIPage extends StatelessWidget {
           "Continue",
         ),
         onPressed: () async {
-          log("ass");
           await addPoemToUserTexts();
           Navigator.of(context).pop();
         },
