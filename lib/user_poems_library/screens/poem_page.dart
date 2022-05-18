@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:exceptional_memory/user_poems_library/helpers/statusStringHelper.dart';
 import 'package:provider/provider.dart';
 
+import '../enums/status.dart';
 import '../models/poem_font_size_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -30,13 +34,24 @@ class PoemPage extends StatelessWidget {
         ),
         onPressed: () {
           final box = Boxes.getLibPoems();
+          var curr = poem.learnStatus;
+          if (curr == StatusStringHelper.getStringByStatus(Status.notStarted)) {
+            poem.learnStatus =
+                StatusStringHelper.getStringByStatus(Status.inProgress);
+          } else if (curr ==
+              StatusStringHelper.getStringByStatus(Status.inProgress)) {
+            poem.learnStatus =
+                StatusStringHelper.getStringByStatus(Status.finished);
+          }
+          box.put(poem.key, poem);
+          poem.save();
           Navigator.of(context).pop();
         },
       );
 
       AlertDialog alert = AlertDialog(
         title: const Text(
-          "Status",
+          "Change status?",
         ),
         actions: [
           cancelButton,
