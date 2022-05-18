@@ -11,6 +11,7 @@ class SubTheory extends StatelessWidget {
       margin: const EdgeInsets.all(30.0),
       child: Text(
         subText,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
     );
   }

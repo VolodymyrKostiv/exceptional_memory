@@ -56,6 +56,8 @@ class PoemPage extends StatelessWidget {
       create: (context) => PoemFontSizeProvider(),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          titleTextStyle: Theme.of(context).textTheme.headline2,
           title: Container(
             alignment: Alignment.centerLeft,
             child: Column(

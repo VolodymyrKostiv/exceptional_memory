@@ -15,7 +15,10 @@ class TheoryPageLink extends StatelessWidget {
       child: TextButton(
         child: Text(
           linkName.toUpperCase(),
-          style: Theme.of(context).textTheme.headline2,
+          style: const TextStyle(
+              fontSize: 22,
+              color: Color.fromARGB(255, 38, 126, 199),
+              fontWeight: FontWeight.w600),
           textAlign: TextAlign.center,
         ),
         onPressed: () {

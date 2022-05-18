@@ -16,6 +16,8 @@ class TheorySecondaryScreen extends StatelessWidget {
         title: Text(
           textName,
         ),
+        backgroundColor: Theme.of(context).primaryColor,
+        titleTextStyle: Theme.of(context).textTheme.headline2,
       ),
       body: SubTheory(
         subText: textContent,
